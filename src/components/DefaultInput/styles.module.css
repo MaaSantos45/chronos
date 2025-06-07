@@ -8,6 +8,7 @@
     border: .2rem solid transparent;
     border-bottom: .2rem solid var(--primary);
     transition: all 200ms ease-in-out;
+    width: 24rem;
 }
 
 .input::placeholder {

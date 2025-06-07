@@ -2,6 +2,8 @@ import {DefaultInput} from "../DefaultInput";
 import {Cycles} from "../Cycles";
 
 import styles from './styles.module.css'
+import {DefaultButton} from "../DefaultButton";
+import {PlayCircleIcon, StopCircleIcon} from "lucide-react";
 
 export function Form() {
     return (
@@ -25,7 +27,13 @@ export function Form() {
                 </div>
 
                 <div className={styles.formRow}>
-                    <button>Enviar</button>
+                    <DefaultButton color={'green'}>
+                        <PlayCircleIcon />
+                    </DefaultButton>
+
+                    <DefaultButton color={'red'}>
+                        <StopCircleIcon />
+                    </DefaultButton>
                 </div>
             </form>
         </>
