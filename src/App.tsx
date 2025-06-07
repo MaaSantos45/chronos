@@ -6,6 +6,7 @@ import {Logo} from "./components/Logo";
 import './styles/theme.css'
 import './styles/global.css'
 import './styles/App.css'
+import {Menu} from "./components/Menu";
 
 
 function App() {
@@ -18,9 +19,7 @@ function App() {
             </Container>
 
             <Container>
-                <Heading>
-                    MENU
-                </Heading>
+                <Menu />
             </Container>
 
             <Container>

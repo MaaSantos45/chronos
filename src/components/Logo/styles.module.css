@@ -10,6 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
     flex-direction: column;
     gap: 0.2rem;
     font-size: 4.2rem;
@@ -20,6 +21,7 @@
 
 .logoLink:hover {
     filter: brightness(60%);
+    color: var(--link-hover);
 }
 
 .logoLink svg {
