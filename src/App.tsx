@@ -1,9 +1,11 @@
 // import { useState } from 'react'
+import {Container, ContainerFluid} from "./components/Container";
+import {Heading} from "./components/Heading";
+import {Logo} from "./components/Logo";
+
 import './styles/theme.css'
 import './styles/global.css'
 import './styles/App.css'
-import {Container, ContainerFluid} from "./components/Container";
-import {Heading} from "./components/Heading";
 
 
 function App() {
@@ -12,9 +14,7 @@ function App() {
     <>
         <ContainerFluid>
             <Container>
-                <Heading>
-                    LOGO
-                </Heading>
+                <Logo />
             </Container>
 
             <Container>
