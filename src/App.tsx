@@ -2,6 +2,7 @@
 import {Container, ContainerFluid} from "./components/Container";
 import {Heading} from "./components/Heading";
 import {Logo} from "./components/Logo";
+import {CountDown} from "./components/CountDown"
 
 import './styles/theme.css'
 import './styles/global.css'
@@ -23,9 +24,7 @@ function App() {
             </Container>
 
             <Container>
-                <Heading>
-                    FORM
-                </Heading>
+                <CountDown />
             </Container>
 
             <Container>
