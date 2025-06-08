@@ -2,7 +2,7 @@ import styles from './styles.module.css'
 import {useTaskContext} from "../../contexts/TaskContext/useTaskContext.ts";
 
 export function CountDown() {
-    const {state, setState} = useTaskContext();
+    const {state, } = useTaskContext();
 
     return (
         <>
