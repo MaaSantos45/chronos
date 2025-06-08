@@ -1,14 +1,17 @@
 import { Home } from './pages/Home'
-import { NotFound } from './pages/NotFound'
 import { About } from './pages/About'
+import { NotFound } from './pages/NotFound'
+import {TaskContextProvider} from "./contexts/TaskContext";
 
 function App() {
 
-  return (
-    <>
-        <Home />
-    </>
-  )
+    return (
+        <>
+            <TaskContextProvider>
+                <Home />
+            </TaskContextProvider>
+        </>
+    )
 }
 
 export default App

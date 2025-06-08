@@ -1,4 +1,4 @@
-import { TaskStateModel } from './TaskStateModel.tsx'
+import type {TaskStateModel} from './TaskStateModel.tsx';
 
 export type TaskModel = {
     id: string,

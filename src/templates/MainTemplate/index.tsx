@@ -2,7 +2,6 @@ import { Container, ContainerFluid } from "../../components/Container";
 import { Logo } from "../../components/Logo";
 import { Menu } from "../../components/Menu";
 import { Footer } from "../../components/Footer";
-import { GenericHtml } from "../../components/GenericHtml";
 import * as React from "react";
 
 import '../../styles/global.css'
@@ -25,9 +24,9 @@ export function MainTemplate({ children }: MainTemplateProps) {
                     <Menu />
                 </Container>
 
-                <GenericHtml>
+                <Container>
                     { children }
-                </GenericHtml>
+                </Container>
 
                 <Container>
                     <Footer />

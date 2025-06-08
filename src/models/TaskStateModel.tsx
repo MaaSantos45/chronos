@@ -9,9 +9,9 @@ export type TaskStateModel = {
     currentCycle: number
 
     config: {
-        "workTime": number;
-        "breakTime": number;
-        "restTime": number;
+        "workTime": number,
+        "breakTime": number,
+        "restTime": number,
     }
 };
 

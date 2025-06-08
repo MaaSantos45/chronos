@@ -1,13 +1,13 @@
 import { MainTemplate } from "../../templates/MainTemplate";
-import {Container} from "../../components/Container";
 import {Heading} from "../../components/Heading";
+import {GenericHtml} from "../../components/GenericHtml";
 
 
 export function About() {
     return (
         <>
             <MainTemplate>
-                <Container>
+                <GenericHtml>
                     <Heading>A Técnica Pomodoro 🍅</Heading>
 
                     <p>
@@ -118,7 +118,7 @@ export function About() {
                     <p>
                         <em>"Foco total, sem pressa, sem pausa, só vai!"</em> 💪🧘‍♂️
                     </p>
-                </Container>
+                </GenericHtml>
             </MainTemplate>
         </>
     )
