@@ -5,7 +5,7 @@ import styles from './styles.module.css'
 import {DefaultButton} from "../DefaultButton";
 import {PlayCircleIcon, StopCircleIcon} from "lucide-react";
 
-export function Form() {
+export function MainForm() {
     return (
         <>
             <form className={styles.form} action="">
