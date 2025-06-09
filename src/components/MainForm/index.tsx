@@ -55,6 +55,17 @@ export function MainForm() {
         })
     }
 
+    function handleInterrupt() {
+        setState(prevState => {
+            return {
+                ...prevState,
+                activeTask: null,
+                secondsRemaining: 0,
+                formatedSecondsRemaining: formatSeconds(0),
+            }
+        })
+    }
+
     const buttonIcon = {
         green: <PlayCircleIcon />,
         red: <StopCircleIcon />,
@@ -71,6 +82,7 @@ export function MainForm() {
                         placeholder={'Digite Algo'}
                         value={taskName}
                         onChange={(e) => {setTaskName(e.target.value)}}
+                        disabled={!!state.activeTask}
                     />
                 </div>
 
@@ -85,9 +97,26 @@ export function MainForm() {
                 )}
 
                 <div className={styles.formRow}>
-                    <DefaultButton color={'green'}>
-                        {buttonIcon['green']}
-                    </DefaultButton>
+                    {!state.activeTask ? (
+                        <DefaultButton
+                            color={'green'}
+                            type={'submit'}
+                            aria-label={'Iniciar Tarefa'}
+                            key={'SubmitButton'}
+                        >
+                            {buttonIcon['green']}
+                        </DefaultButton>
+                    ) : (
+                        <DefaultButton
+                            color={'red'}
+                            type={'button'}
+                            aria-label={'Interromper Tarefa Atual'}
+                            onClick={handleInterrupt}
+                            key={'InterruptButton'}
+                        >
+                            {buttonIcon['red']}
+                        </DefaultButton>
+                    )}
                 </div>
             </form>
         </>
