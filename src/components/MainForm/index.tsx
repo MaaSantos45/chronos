@@ -40,7 +40,6 @@ export function MainForm() {
         }
 
         dispatch({type: "START_TASK", payload: newTask})
-
     }
 
     function handleInterrupt() {
