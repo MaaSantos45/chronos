@@ -15,5 +15,5 @@ export const TaskActionType = {
 
 export type TaskActionModel =
     | {type: typeof TaskActionType.START_TASK, payload: TaskModel,}
-    | {type: typeof TaskActionType.INTERRUPT_TASK, payload: TaskModel,}
+    | {type: typeof TaskActionType.INTERRUPT_TASK,}
     | {type: typeof TaskActionType.RESET_STATE,};

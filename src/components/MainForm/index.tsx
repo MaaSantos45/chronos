@@ -10,14 +10,10 @@ import type {TaskModel} from "../../models/TaskModel.tsx";
 import {useTaskContext} from "../../contexts/TaskContext/useTaskContext.ts";
 import {getCycle} from "../../utils/getCycle.ts";
 import {getCycleTime} from "../../utils/getCycleTime.ts";
-import {formatSeconds} from "../../utils/formatSeconds.ts";
 
 export function MainForm() {
-    const { state, setState } = useTaskContext()
+    const { state, dispatch } = useTaskContext()
     const [ taskName, setTaskName ] = useState('');
-
-    const nextCycle = getCycle(state.currentCycle)
-    const nextCycleTime = getCycleTime(nextCycle)
 
     function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -29,6 +25,9 @@ export function MainForm() {
             return;
         }
 
+        const nextCycle = getCycle(state.currentCycle)
+        const nextCycleTime = getCycleTime(nextCycle)
+
         const newTask: TaskModel = {
             id: Date.now().toString(),
             name: taskNameValue,
@@ -38,38 +37,13 @@ export function MainForm() {
             duration: state.config[nextCycleTime],
             type: nextCycleTime,
         }
-        console.log(newTask);
 
-        const secondsRemaining: number = newTask.duration * 60;
+        dispatch({type: "START_TASK", payload: newTask})
 
-        setState(prevState => {
-            return {
-                ...prevState,
-                config: { ...prevState.config },
-                activeTask: newTask,
-                currentCycle: nextCycle,
-                secondsRemaining: secondsRemaining,
-                formatedSecondsRemaining: formatSeconds(secondsRemaining),
-                tasks: [...prevState.tasks, newTask]
-            }
-        })
     }
 
     function handleInterrupt() {
-        setState(prevState => {
-            return {
-                ...prevState,
-                activeTask: null,
-                secondsRemaining: 0,
-                formatedSecondsRemaining: formatSeconds(0),
-                tasks: prevState.tasks.map(task => {
-                    if(prevState.activeTask && prevState.activeTask.id === task.id) {
-                        return {...task, completeDate: Date.now(),  interupted: true};
-                    }
-                    return task
-                }),
-            }
-        })
+        dispatch({type: "INTERRUPT_TASK"})
     }
 
     const buttonIcon = {
