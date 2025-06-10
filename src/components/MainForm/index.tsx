@@ -1,6 +1,5 @@
 import {DefaultInput} from "../DefaultInput";
 import {Cycles} from "../Cycles";
-
 import styles from './styles.module.css'
 import {DefaultButton} from "../DefaultButton";
 import {PlayCircleIcon, StopCircleIcon} from "lucide-react";
@@ -10,6 +9,8 @@ import type {TaskModel} from "../../models/TaskModel.tsx";
 import {useTaskContext} from "../../contexts/TaskContext/useTaskContext.ts";
 import {getCycle} from "../../utils/getCycle.ts";
 import {getCycleTime} from "../../utils/getCycleTime.ts";
+import {Tips} from "../Tips";
+
 
 export function MainForm() {
     const { state, dispatch } = useTaskContext()
@@ -67,7 +68,7 @@ export function MainForm() {
                 </div>
 
                 <div className={styles.formRow}>
-                    <p>Lorem ipsum dolor sit amet.</p>
+                    <Tips />
                 </div>
 
                 {state.currentCycle > 0 && (
