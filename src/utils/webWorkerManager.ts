@@ -1,3 +1,5 @@
+import type {TaskStateModel} from "../models/TaskStateModel.tsx";
+
 let instance: WorkerManager | null = null;
 
 export class WorkerManager {
@@ -14,7 +16,7 @@ export class WorkerManager {
         return instance
     }
 
-    postMessage(message: string) {
+    postMessage(message: TaskStateModel) {
         this.worker.postMessage(message);
     }
 

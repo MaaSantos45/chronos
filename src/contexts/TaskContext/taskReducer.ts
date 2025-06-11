@@ -35,6 +35,29 @@ export function taskReducer(state: TaskStateModel, action: TaskActionModel) {
             }
         }
 
+        case TaskActionType.COMPLETE_TASK: {
+            return {
+                ...state,
+                activeTask: null,
+                secondsRemaining: 0,
+                formatedSecondsRemaining: formatSeconds(0),
+                tasks: state.tasks.map(task => {
+                    if(state.activeTask && state.activeTask.id === task.id) {
+                        return {...task, completeDate: Date.now(), interupted: false};
+                    }
+                    return task;
+                })
+            }
+        }
+
+        case TaskActionType.COUNT_DOWN: {
+            return {
+                ...state,
+                secondsRemaining: action.payload.secondsRemaining,
+                formatedSecondsRemaining: formatSeconds(action.payload.secondsRemaining),
+            }
+        }
+
         case TaskActionType.RESET_STATE: {
 
             return state

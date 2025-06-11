@@ -10,10 +10,14 @@ import type {TaskModel} from "../../models/TaskModel.tsx";
 export const TaskActionType = {
     START_TASK: "START_TASK",
     INTERRUPT_TASK: "INTERRUPT_TASK",
-    RESET_STATE: "RESET_STATE"
+    COMPLETE_TASK: "COMPLETE_TASK",
+    RESET_STATE: "RESET_STATE",
+    COUNT_DOWN: "COUNT_DOWN",
 } as const;
 
 export type TaskActionModel =
     | {type: typeof TaskActionType.START_TASK, payload: TaskModel,}
     | {type: typeof TaskActionType.INTERRUPT_TASK,}
-    | {type: typeof TaskActionType.RESET_STATE,};
+    | {type: typeof TaskActionType.COMPLETE_TASK,}
+    | {type: typeof TaskActionType.RESET_STATE,}
+    | {type: typeof TaskActionType.COUNT_DOWN, payload: {secondsRemaining: number}};
