@@ -7,6 +7,7 @@ import {type TaskActionModel, TaskActionType} from "./taskActions.ts";
 import type {TaskStateModel} from "../../models/TaskStateModel.tsx";
 import {WorkerManager} from "../../utils/webWorkerManager.ts";
 import {loadBeep} from "../../utils/loadBeep.ts";
+import {showMessage} from "../../adapters/showMessage.ts";
 
 type TaskContextProviderProps = {
     children: React.ReactNode;
@@ -28,6 +29,7 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
             }
 
             dispatch({type: TaskActionType.COMPLETE_TASK});
+            showMessage.success("Tarefa Concluída")
             worker.terminate()
         } else {
             dispatch({type: TaskActionType.COUNT_DOWN, payload: {secondsRemaining: count}});

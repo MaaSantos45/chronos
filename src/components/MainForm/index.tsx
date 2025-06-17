@@ -10,6 +10,7 @@ import {useTaskContext} from "../../contexts/TaskContext/useTaskContext.ts";
 import {getCycle} from "../../utils/getCycle.ts";
 import {getCycleTime} from "../../utils/getCycleTime.ts";
 import {Tips} from "../Tips";
+import {showMessage} from "../../adapters/showMessage.ts";
 
 
 export function MainForm() {
@@ -22,7 +23,7 @@ export function MainForm() {
         const taskNameValue = taskName.trim();
 
         if(!taskNameValue){
-            alert("Digite o nome da tarefa");
+            showMessage.warning("Digite o nome da tarefa");
             return;
         }
 
@@ -40,10 +41,12 @@ export function MainForm() {
         }
 
         dispatch({type: "START_TASK", payload: newTask})
+        showMessage.info("Tarefa Iniciada")
     }
 
     function handleInterrupt() {
         dispatch({type: "INTERRUPT_TASK"})
+        showMessage.error("Tarefa Interrompida")
     }
 
     const buttonIcon = {
