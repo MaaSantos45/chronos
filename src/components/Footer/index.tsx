@@ -1,16 +1,17 @@
 import styles from './styles.module.css'
+import {MainLink} from "../../routers/MainLink";
 
 export function Footer() {
     return (
         <>
             <footer className={styles.footer}>
-                <a href="/">
+                <MainLink href="/about">
                     Entenda como funciona a técnica pomodoro
-                </a>
+                </MainLink>
 
-                <a href="/">
+                <MainLink href="/">
                     Chronos Pomodoro &copy; { new Date().getFullYear() } - Feito com 💚
-                </a>
+                </MainLink>
             </footer>
         </>
     )

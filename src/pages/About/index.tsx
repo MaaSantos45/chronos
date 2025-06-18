@@ -1,6 +1,7 @@
 import { MainTemplate } from "../../templates/MainTemplate";
 import {Heading} from "../../components/Heading";
 import {GenericHtml} from "../../components/GenericHtml";
+import {MainLink} from "../../routers/MainLink";
 
 
 export function About() {
@@ -50,7 +51,7 @@ export function About() {
                     <p>
                         Você pode configurar o tempo de foco, descanso curto e descanso
                         longo do jeito que quiser! Basta acessar a{' '}
-                        <a href='/settings'>página de configurações</a> e ajustar os minutos
+                        <MainLink href='/settings'>página de configurações</MainLink> e ajustar os minutos
                         como preferir.
                     </p>
 
@@ -96,7 +97,7 @@ export function About() {
                     <h3>📊 Histórico automático</h3>
                     <p>
                         Todas as suas tarefas e ciclos concluídos ficam salvos no{' '}
-                        <a href='/history'>histórico</a>, com status de completas ou
+                        <MainLink href='/history'>histórico</MainLink>, com status de completas ou
                         interrompidas. Assim, você consegue acompanhar sua evolução ao longo
                         do tempo.
                     </p>
@@ -111,7 +112,7 @@ export function About() {
 
                     <p>
                         <strong>Pronto pra focar?</strong> Bora lá{' '}
-                        <a href='/'>voltar para a página inicial</a> e iniciar seus
+                        <MainLink href='/'>voltar para a página inicial</MainLink> e iniciar seus
                         Pomodoros! 🍅🚀
                     </p>
 

@@ -8,6 +8,7 @@ import {
 import { useState, useEffect } from "react";
 import * as React from "react";
 import styles from './styles.module.css';
+import {MainLink} from "../../routers/MainLink";
 
 type AvailableThemes = "dark" | "light"
 
@@ -37,18 +38,19 @@ export function Menu() {
     return (
         <>
             <nav className={styles.menu}>
-                <a className={styles.menuLink} href="/" aria-label={"Home"} title={"Home"}>
+                <MainLink className={styles.menuLink} href="/" aria-label={"Home"} title={"Home"}>
                     <HouseIcon />
-                </a>
+                </MainLink>
 
-                <a className={styles.menuLink} href="/"  aria-label={"History"} title={"History"}>
+                <MainLink className={styles.menuLink} href="/history"  aria-label={"History"} title={"History"}>
                     <HistoryIcon />
-                </a>
-                <a className={styles.menuLink} href="/" aria-label={"Settings"} title={"Settings"}>
-                    <SettingsIcon />
-                </a>
+                </MainLink>
 
-                <a className={styles.menuLink} onClick={handleToggleTheme} href="#" aria-label={"Themes"} title={"Themes"}>
+                <MainLink className={styles.menuLink} href="/settings" aria-label={"Settings"} title={"Settings"}>
+                    <SettingsIcon />
+                </MainLink>
+
+                <a className={styles.menuLink} onClick={handleToggleTheme} aria-label={"Themes"} title={"Themes"}>
                     {themeIcon[theme]}
                 </a>
             </nav>
