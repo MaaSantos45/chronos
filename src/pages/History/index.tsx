@@ -68,14 +68,21 @@ export function History() {
                                         onClick={() => handleSortTask({field: 'name'})}
                                         className={styles.thSort}
                                     >Tarefa ↕</th>
+
                                     <th
                                         onClick={() => handleSortTask({field: 'duration'})}
                                         className={styles.thSort}
                                     >Duração ↕</th>
+
                                     <th
                                         onClick={() => handleSortTask({field: 'startDate'})}
                                         className={styles.thSort}
-                                    >Data ↕</th>
+                                    >Data Inicio ↕</th>
+
+                                    <th
+                                        onClick={() => handleSortTask({field: 'completeDate'})}
+                                        className={styles.thSort}
+                                    >Data Final ↕</th>
                                     <th>Status</th>
                                     <th>Tipo</th>
                                 </tr>
@@ -88,6 +95,7 @@ export function History() {
                                         <td>{task.name}</td>
                                         <td>{task.duration}min</td>
                                         <td>{new Date(task.startDate).toLocaleString()}</td>
+                                        <td>{task.completeDate ? new Date(task.completeDate).toLocaleString() : "Incompleta"}</td>
                                         <td>{getTaskStatus(task, state.activeTask)}</td>
                                         <td>{tiposState[task.type]}</td>
                                     </tr>
