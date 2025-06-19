@@ -15,7 +15,23 @@ type TaskContextProviderProps = {
 
 export function TaskContextProvider({ children }: TaskContextProviderProps) {
 
-    const [state, dispatch] = useReducer<TaskStateModel, [TaskActionModel]>(taskReducer, initialTaskState);
+    const [state, dispatch] = useReducer<TaskStateModel, TaskStateModel, [TaskActionModel] >(
+        taskReducer,
+        initialTaskState,
+        () => {
+            const storageState = localStorage.getItem("state");
+            if(storageState === null) return initialTaskState;
+
+            const parsedState = JSON.parse(storageState) as TaskStateModel;
+
+            return {
+                ...parsedState,
+                activeTask: null,
+                secondsRemaining: 0,
+                formatedSecondsRemaining: "00:00",
+            };
+        }
+    );
     const worker = WorkerManager.getInstance();
     const playBeepRef = useRef<ReturnType<typeof loadBeep> | null>(null);
 
@@ -37,6 +53,8 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
     })
 
     useEffect(() => {
+        localStorage.setItem('state', JSON.stringify(state));
+
         if(!state.activeTask) {
             worker.terminate();
         }
