@@ -5,6 +5,7 @@ import {DefaultButton} from "../../components/DefaultButton";
 import {TrashIcon} from "lucide-react";
 import styles from './styles.module.css'
 import {useTaskContext} from "../../contexts/TaskContext/useTaskContext.ts";
+import {getTaskStatus} from "../../utils/getTaskStatus.ts";
 
 
 export function History() {
@@ -55,7 +56,7 @@ export function History() {
                                         <td>{task.name}</td>
                                         <td>{task.duration}min</td>
                                         <td>{new Date(task.startDate).toLocaleString()}</td>
-                                        <td>Completa</td>
+                                        <td>{getTaskStatus(task, state.activeTask)}</td>
                                         <td>{tiposState[task.type]}</td>
                                     </tr>
                                 )
