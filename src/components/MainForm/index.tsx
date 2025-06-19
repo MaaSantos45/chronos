@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 import {DefaultButton} from "../DefaultButton";
 import {PlayCircleIcon, StopCircleIcon} from "lucide-react";
 import * as React from "react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import type {TaskModel} from "../../models/TaskModel.tsx";
 import {useTaskContext} from "../../contexts/TaskContext/useTaskContext.ts";
 import {getCycle} from "../../utils/getCycle.ts";
@@ -16,6 +16,17 @@ import {showMessage} from "../../adapters/showMessage.ts";
 export function MainForm() {
     const { state, dispatch } = useTaskContext()
     const [ taskName, setTaskName ] = useState('');
+    const lastTask = state.tasks[state.tasks.length - 1]?.name || '';
+
+    useEffect(() => {
+        if(lastTask){
+            setTaskName(lastTask);
+        }
+    }, [lastTask]);
+
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+        setTaskName(event.target.value)
+    }
 
     function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -64,7 +75,7 @@ export function MainForm() {
                         label={'Task'}
                         placeholder={'Digite Algo'}
                         value={taskName}
-                        onChange={(e) => {setTaskName(e.target.value)}}
+                        onChange={handleChange}
                         disabled={!!state.activeTask}
                     />
                 </div>
