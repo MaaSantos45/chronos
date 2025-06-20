@@ -6,6 +6,7 @@
 // payload <- os dados extras enviados junto com a action, se necessário para atualizar o estado
 
 import type {TaskModel} from "../../models/TaskModel.tsx";
+import type {TaskStateModel} from "../../models/TaskStateModel.tsx";
 
 export const TaskActionType = {
     START_TASK: "START_TASK",
@@ -13,6 +14,7 @@ export const TaskActionType = {
     COMPLETE_TASK: "COMPLETE_TASK",
     RESET_STATE: "RESET_STATE",
     COUNT_DOWN: "COUNT_DOWN",
+    CHANGE_SETTINGS: "CHANGE_SETTINGS",
 } as const;
 
 export type TaskActionModel =
@@ -20,4 +22,6 @@ export type TaskActionModel =
     | {type: typeof TaskActionType.INTERRUPT_TASK,}
     | {type: typeof TaskActionType.COMPLETE_TASK,}
     | {type: typeof TaskActionType.RESET_STATE,}
-    | {type: typeof TaskActionType.COUNT_DOWN, payload: {secondsRemaining: number}};
+    | {type: typeof TaskActionType.COUNT_DOWN, payload: {secondsRemaining: number}}
+    | {type: typeof TaskActionType.CHANGE_SETTINGS, payload: TaskStateModel['config']}
+;

@@ -63,6 +63,13 @@ export function taskReducer(state: TaskStateModel, action: TaskActionModel) {
             return {...initialTaskState}
         }
 
+        case TaskActionType.CHANGE_SETTINGS: {
+            return {
+                ...state,
+                config: {...action.payload}
+            }
+        }
+
         default: {
 
             return state;

@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 import {Dialog} from "../components/Dialog";
 
 export const showMessage = {
+    dismiss: () => toast.dismiss(),
     success: (msg: string) => toast.success(msg),
     error: (msg: string) => toast.error(msg),
     warning: (msg: string) => toast.warning(msg),

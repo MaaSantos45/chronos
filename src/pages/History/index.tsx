@@ -34,16 +34,18 @@ export function History() {
         }));
     }, [state.tasks]);
 
+    useEffect(() => {
+        return () => {
+            showMessage.dismiss()
+        }
+    }, []);
+
     function clearHistory() {
         showMessage.confirm("Deseja Apagar o Histórico?",(confirmation) => {
             if (confirmation) {
                 dispatch({type: TaskActionType.RESET_STATE})
             }
         })
-
-        // if(confirm("Tem Certeza Que Deseja Apagar o Histórico?")){
-        //     dispatch({type: TaskActionType.RESET_STATE})
-        // }
     }
 
     function handleSortTask({field}: Pick<SortTaskOptions, 'field'>) {
