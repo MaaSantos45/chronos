@@ -2,6 +2,7 @@ import {type TaskActionModel, TaskActionType} from "./taskActions.ts";
 import type {TaskStateModel} from "../../models/TaskStateModel.tsx";
 import {getCycle} from "../../utils/getCycle.ts";
 import {formatSeconds} from "../../utils/formatSeconds.ts";
+import {initialTaskState} from "./initialTaskState.ts";
 
 export function taskReducer(state: TaskStateModel, action: TaskActionModel) {
 
@@ -59,8 +60,7 @@ export function taskReducer(state: TaskStateModel, action: TaskActionModel) {
         }
 
         case TaskActionType.RESET_STATE: {
-
-            return state
+            return {...initialTaskState}
         }
 
         default: {
